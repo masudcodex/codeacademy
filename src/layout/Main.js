@@ -10,10 +10,10 @@ const Main = () => {
             <Header></Header>
             <Container>
                 <Row>
-                    <Col lg="10">
+                    <Col lg="9">
                         <Outlet></Outlet>
                     </Col>
-                    <Col lg="2">
+                    <Col lg="3">
                         <RightSidebar></RightSidebar>
                     </Col>
                 </Row>

@@ -1,14 +1,19 @@
 import React from 'react';
+import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
+import CourseGridView from '../CourseGridView/CourseGridView';
+import './Courses.css';
 
 const Courses = () => {
     const courses = useLoaderData();
     return (
-        <div className='container'>
+        <div>
             <h2>All Courses</h2>
-            {
-                courses.map(course=> console.log(course))
-            }
+            <div className="course-container">
+                {
+                    courses.map(course=> <CourseGridView key={course._id} course={course}></CourseGridView>)
+                }
+            </div>
         </div>
     );
 };

@@ -1,0 +1,13 @@
+.categoryList {
+    padding: 7px 10px;
+    margin: 0;
+}
+.categoryList:hover{
+    background-color:antiquewhite
+}
+.categoryList a{
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #F37335;
+}
