@@ -1,0 +1,30 @@
+.header{
+    background-color: #fafafa;
+}
+.nav-link a{
+    color: #135e9e;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 5px;
+}
+.nav-link a:hover{
+    color: #F37335;
+    border-bottom: 3px solid #F37335;
+    transform: scaleX(1);
+    transition: all .1s ease;
+}
+.nav-link:hover{
+    color: #F37335;
+    
+}
+.dropdown-toggle{
+    color: #135e9e !important;
+    font-size: 20px;
+    margin-top: -7px;
+}
+.dropdown-toggle:hover{
+    color: #F37335 !important;
+}
+
+
+
