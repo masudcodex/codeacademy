@@ -1,8 +1,10 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 
-const CourseGridView = ({course}) => {
+const CategoryItemsSummary = ({course}) => {
+    
     const {title, image_url, author, details, rating, price} = course;
+    
     return (
         <Card>
             <Card.Img variant="top" src={image_url} />
@@ -21,6 +23,4 @@ const CourseGridView = ({course}) => {
     );
 };
 
-export default CourseGridView;
-
-
+export default CategoryItemsSummary;
