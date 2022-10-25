@@ -6,6 +6,8 @@ import FAQ from '../../pages/FAQ/FAQ';
 import Blog from '../../pages/Blog/Blog';
 import Others from '../../layout/Others';
 import ErrorPage from '../../pages/ErrorPage/ErrorPage';
+import Login from '../../pages/Login/Login';
+import SignUp from '../../pages/SignUp/SignUp';
 
 const Routes = createBrowserRouter([
     {
@@ -14,6 +16,7 @@ const Routes = createBrowserRouter([
         children: [
             {
                 path: '/',
+                loader: async () => fetch('http://localhost:5000/course'),
                 element: <Courses></Courses>
             }
 
@@ -30,6 +33,14 @@ const Routes = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: 'signup',
+                element: <SignUp></SignUp>
             }
         ]
     },

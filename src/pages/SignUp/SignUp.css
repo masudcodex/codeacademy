@@ -1,0 +1,11 @@
+.social-signup{
+    background-color: #ffd7c4;
+    color: #000000;
+    text-decoration: none;
+    padding: 7px 20px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+.social-signup:hover{
+    color: #000000;
+}
