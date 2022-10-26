@@ -5,13 +5,17 @@ import image from '../../assets/images/logo-background.jpg';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 import { AuthContext } from '../../contexts/AuthProvider';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
 
-    const auth = useContext(AuthContext);
-    const [error, setError] = useState('');
-    const {logInUser} = auth;
+    const {logInUser, providerLogin} = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
+    const [error, setError] = useState('');
+
+    //----------SignIn with Email and Password--------------//
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
@@ -23,6 +27,27 @@ const Login = () => {
             console.log(user);
         })
         .catch(error=> setError(error.message));
+    }
+
+    //----------Google SignIn--------------//
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+        .then(result=> {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error=> {
+            setError(error.message)
+        })
+    }
+    //----------Github SignIn--------------//
+    const handleGithubSignIn = () => {
+        providerLogin(githubProvider)
+        .then(result=>{
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error=>setError(error.message))
     }
 
     return (
@@ -39,8 +64,8 @@ const Login = () => {
                         <div className='my-3 d-flex align-items-center justify-content-between'>
                             <p className='my-2 text-muted'>Sign in with</p>
                             <div className='d-flex'>
-                                <FcGoogle className='social-icon fs-4 me-3'/>
-                                <FaGithub className='social-icon fs-4' />
+                                <FcGoogle onClick={handleGoogleSignIn} className='social-icon fs-4 me-3'/>
+                                <FaGithub onClick={handleGithubSignIn} className='social-icon fs-4' />
                             </div>
                         </div>
                         <Form onSubmit={handleSubmit}>

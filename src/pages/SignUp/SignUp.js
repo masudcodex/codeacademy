@@ -6,15 +6,20 @@ import { Link } from 'react-router-dom';
 import './SignUp.css';
 import image from '../../assets/images/Sign_up.png';
 import { AuthContext } from '../../contexts/AuthProvider';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+
+
 
 const SignUp = () => {
-
-    const auth = useContext(AuthContext);
+    
+    const {createUser, providerLogin} = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
     const [error, setError] = useState('');
-    const {createUser} = auth;
     
 
 
+     //----------SignUp with email and password--------------//
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -30,8 +35,30 @@ const SignUp = () => {
             console.log(user);
         })
         .catch(error=> setError(error.message))
+    }
 
+     //----------Google SignUp--------------//
 
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+        .then(result=> {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error=> {
+            setError(error.message)
+        })
+    }
+
+    //----------Github SignUp--------------//
+
+    const handleGithubSignIn = () => {
+        providerLogin(githubProvider)
+        .then(result=>{
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error=>setError(error.message))
     }
 
     return (
@@ -69,15 +96,14 @@ const SignUp = () => {
                             <Form.Text className="text-danger d-block">
                                 {error}
                             </Form.Text>
-
-                            <div className='mt-3'>
-                                <p>Sign up with social platforms</p>
-                                <div className='d-flex'>
-                                    <Link className='social-signup'><FcGoogle className='me-2'/>Signup with Google</Link>
-                                    <Link className='social-signup'><FaGithub  className='me-2'/>Signup with GitHub</Link>
-                                </div>
-                            </div>
                         </Form>
+                        <div className='mt-3'>
+                            <p>Sign up with social platforms</p>
+                            <div className='d-flex'>
+                                <Link onClick={handleGoogleSignIn} className='social-signup'><FcGoogle className='me-2'/>Signup with Google</Link>
+                                <Link onClick={handleGithubSignIn} className='social-signup'><FaGithub  className='me-2'/>Signup with GitHub</Link>
+                            </div>
+                        </div>
                         <div className='mt-3'>
                             <p>Already Have an account? <Link to="/login">Login</Link></p>
                         </div>

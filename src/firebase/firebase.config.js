@@ -1,14 +1,13 @@
 import { initializeApp } from "firebase/app";
 
 
-//Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA8PhGdz1JQKnBmyun8kCfxWW784lj2zds",
-  authDomain: "codeacademy-2amrx.firebaseapp.com",
-  projectId: "codeacademy-2amrx",
-  storageBucket: "codeacademy-2amrx.appspot.com",
-  messagingSenderId: "325233291855",
-  appId: "1:325233291855:web:caf45f7aaddcc6b40c303a"
+  apiKey: "AIzaSyBjQ8laiwUZ6ArQt8vzSLs3C-kovllFB00",
+  authDomain: "codeacademy-2f083.firebaseapp.com",
+  projectId: "codeacademy-2f083",
+  storageBucket: "codeacademy-2f083.appspot.com",
+  messagingSenderId: "654481716099",
+  appId: "1:654481716099:web:d632cc6fab7faa741ffcb6"
 };
 
 // Initialize Firebase

@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container, Form, Nav, Navbar, NavDropdown, ToggleButton } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
 import { FaUserCircle } from 'react-icons/fa';
 import "react-toggle/style.css"
 import './Header.css';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 
 const Header = () => {
+
+    const {user, logOutUser} = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOutUser()
+        .then(result=> {})
+        .then(error=> console.error(error))
+    }
+
+
     return (
         <Navbar collapseOnSelect expand="lg" variant="light" className='header'>
             <Container>
@@ -21,12 +32,16 @@ const Header = () => {
                     <span className='nav-link'><Link to="/faq">FAQ</Link></span>
                     <span className='nav-link'><Link to="/blog">BLOG</Link></span>
                     <span className='nav-link'><Link to="/login">LOGIN/REGISTER</Link></span>
-                    <NavDropdown title={<FaUserCircle></FaUserCircle>}>
-                    <NavDropdown.Item className="nav-link"><Link to="/profile">Your profile</Link></NavDropdown.Item>
-                    <NavDropdown.Item className='nav-link'>
-                        <Link>Log Out</Link>
-                    </NavDropdown.Item>
-                    </NavDropdown>
+                    {
+                        user?.uid &&  
+                        <NavDropdown title={<FaUserCircle></FaUserCircle>}>
+                        <NavDropdown.Item className="nav-link"><Link to="/profile">Your profile</Link></NavDropdown.Item>
+                        <NavDropdown.Item className='nav-link'>
+                            <Link onClick={handleLogOut}>Log Out</Link>
+                        </NavDropdown.Item>
+                        </NavDropdown>
+                    }
+                    
                     <span className='nav-link'>
                         <Form.Check 
                             type="switch"
