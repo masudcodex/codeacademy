@@ -25,6 +25,16 @@
 .dropdown-toggle:hover{
     color: #F37335 !important;
 }
+.form-check-label{
+    font-weight: 600;
+}
+.form-switch .form-check-input{
+    font-size: 18px;
+}
+.form-switch {
+    padding-left: 30px;
+    margin-top: -2px;
+}
 
 
 

@@ -1,11 +1,30 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Form, Button, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import image from '../../assets/images/logo-background.jpg';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
+
+    const auth = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const {logInUser} = auth;
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        logInUser(email,password)
+        .then(result=>{
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error=> setError(error.message));
+    }
+
     return (
         <div className='container'>
             <Container>
@@ -24,7 +43,7 @@ const Login = () => {
                                 <FaGithub className='social-icon fs-4' />
                             </div>
                         </div>
-                        <Form>
+                        <Form onSubmit={handleSubmit}>
                             <Form.Group className="mb-3">
                                 <Form.Label>Email address</Form.Label>
                                 <Form.Control name="email" type="email" placeholder="Enter email" required/>
@@ -39,7 +58,7 @@ const Login = () => {
                                 Submit
                             </Button>
                             <Form.Text className="text-danger">
-                            
+                                {error}
                             </Form.Text>
                         </Form>
                         <div className='mt-3'>

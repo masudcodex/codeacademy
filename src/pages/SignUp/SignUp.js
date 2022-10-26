@@ -1,12 +1,39 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
 import './SignUp.css';
-import image from '../../assets/images/Sign_up.png'
+import image from '../../assets/images/Sign_up.png';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const SignUp = () => {
+
+    const auth = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const {createUser} = auth;
+    
+
+
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const passwordConfirm = form.passwordConfirm.value;
+
+        createUser(email, password)
+        .then(result=> {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error=> setError(error.message))
+
+
+    }
+
     return (
         <div className='container'>
             <Container>
@@ -16,7 +43,7 @@ const SignUp = () => {
                             <h2 className='my-4'>Welcome to CODEACADEMY</h2>
                             <h5>Sign Up to get started</h5>
                         </div>
-                        <Form>
+                        <Form onSubmit={handleSubmit}>
                             <Form.Group className="mb-3">
                                 <Form.Label>Your name</Form.Label>
                                 <Form.Control name="name" type="text" placeholder="Enter your name"/>
@@ -39,8 +66,8 @@ const SignUp = () => {
                             <Button variant="primary" type="submit">
                                 Sign up
                             </Button> 
-                            <Form.Text className="text-danger">
-
+                            <Form.Text className="text-danger d-block">
+                                {error}
                             </Form.Text>
 
                             <div className='mt-3'>
