@@ -1,13 +1,14 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const CourseGridView = ({course}) => {
-    const {title, image_url, author, details, rating, price} = course;
+    const {_id, title, image_url, author, details, rating, price} = course;
     return (
         <Card>
             <Card.Img variant="top" src={image_url} />
             <Card.Body>
-            <Card.Title>{title}</Card.Title>
+            <Card.Title><Link to={`/course/${_id}`}>{title}</Link></Card.Title>
             <p>{author.name}</p>
             <Card.Text>
                 {details.slice(0, 90) + '...'}

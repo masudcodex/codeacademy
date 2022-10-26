@@ -1,0 +1,13 @@
+.course-buy button{
+    width: 100%;
+    margin-right: 10px;
+    background-color: #F37335 !important;
+    border: 0;
+}
+.course-purchase{
+    width: 100%;
+    
+}
+.course-purchase:hover{
+    color: #ffffff;
+}

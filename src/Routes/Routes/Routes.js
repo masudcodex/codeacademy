@@ -9,6 +9,9 @@ import ErrorPage from '../../pages/ErrorPage/ErrorPage';
 import Login from '../../pages/Login/Login';
 import SignUp from '../../pages/SignUp/SignUp';
 import Categories from '../../pages/Categories/Categories';
+import CourseDetails from '../../pages/Courses/CourseDetails/CourseDetails';
+import Cart from '../../pages/Cart/Cart';
+import Profile from '../../pages/Profile/Profile';
 
 const Routes = createBrowserRouter([
     {
@@ -24,7 +27,12 @@ const Routes = createBrowserRouter([
                 path: '/category/:id',
                 loader: async ({params}) => fetch(`http://localhost:5000/category/${params.id}`),
                 element: <Categories></Categories>
-            }
+            },
+            {
+                path: '/course/:id',
+                loader: async({params}) => fetch(`http://localhost:5000/course/${params.id}`),
+                element: <CourseDetails></CourseDetails>
+            },
 
         ]
     },
@@ -37,6 +45,10 @@ const Routes = createBrowserRouter([
                 element: <FAQ></FAQ>
             },
             {
+                path: '/profile',
+                element: <Profile></Profile>
+            },
+            {
                 path: '/blog',
                 element: <Blog></Blog>
             },
@@ -47,6 +59,11 @@ const Routes = createBrowserRouter([
             {
                 path: 'signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/course/:id/checkout',
+                loader: async({params}) => fetch(`http://localhost:5000/course/${params.id}/cart`),
+                element: <Cart></Cart>
             }
         ]
     },
