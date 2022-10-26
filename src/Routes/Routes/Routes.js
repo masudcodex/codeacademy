@@ -12,6 +12,7 @@ import Categories from '../../pages/Categories/Categories';
 import CourseDetails from '../../pages/Courses/CourseDetails/CourseDetails';
 import Cart from '../../pages/Cart/Cart';
 import Profile from '../../pages/Profile/Profile';
+import PrivateRoutes from '../PrivateRoutes/PrivateRoutes';
 
 const Routes = createBrowserRouter([
     {
@@ -46,7 +47,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: '/profile',
-                element: <Profile></Profile>
+                element: <PrivateRoutes><Profile></Profile></PrivateRoutes>
             },
             {
                 path: '/blog',
@@ -63,7 +64,7 @@ const Routes = createBrowserRouter([
             {
                 path: '/course/:id/checkout',
                 loader: async({params}) => fetch(`http://localhost:5000/course/${params.id}/cart`),
-                element: <Cart></Cart>
+                element: <PrivateRoutes><Cart></Cart></PrivateRoutes>
             }
         ]
     },

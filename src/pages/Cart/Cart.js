@@ -76,7 +76,7 @@ const Cart = () => {
                         <h4 className='mb-3'>Payment method</h4>
                         <Form.Group className="my-3">
                             <div className="form-check">
-                            <input id="credit" name="paymentMethod" type="radio" className="form-check-input" checked required />
+                            <input id="credit" name="paymentMethod" type="radio" className="form-check-input" defaultChecked required />
                             <label className="form-check-label" htmlFor="credit">Credit card</label>
                             </div>
                             <div className="form-check">

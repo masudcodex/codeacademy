@@ -12,7 +12,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const SignUp = () => {
     
-    const {createUser, providerLogin} = useContext(AuthContext);
+    const {createUser, providerLogin, updateUserProfile} = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
     const [error, setError] = useState('');
@@ -33,6 +33,9 @@ const SignUp = () => {
         .then(result=> {
             const user = result.user;
             console.log(user);
+            setError('');
+            form.reset();
+            handleUpdateUserProfile(name);
         })
         .catch(error=> setError(error.message))
     }
@@ -59,6 +62,16 @@ const SignUp = () => {
             console.log(user);
         })
         .catch(error=>setError(error.message))
+    }
+
+    //--------Update User Profile-------//
+    const handleUpdateUserProfile=(name)=>{
+        const profile = {
+            displayName: name
+        }
+        updateUserProfile(profile)
+        .then(result=>{})
+        .then(error=> console.error(error))
     }
 
     return (
