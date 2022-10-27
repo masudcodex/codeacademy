@@ -41,27 +41,32 @@ const Header = () => {
                     <span className='nav-link'><Link to="/faq">FAQ</Link></span>
                     <span className='nav-link'><Link to="/blog">BLOG</Link></span>
                     <span className='nav-link'><Link to="/login">LOGIN/REGISTER</Link></span> 
-                    <NavDropdown title={user?.photoURL ? 
-                    <OverlayTrigger
-                    placement="right"
-                    delay={{ show: 250, hide: 400 }}
-                    overlay={renderTooltip}
-                    >
-                    <img width={25} src={user?.photoURL} alt=""/>
-                    </OverlayTrigger> : 
-                    <FaUserCircle />}>
-                        {user?.uid && 
-                        <>
-                            <NavDropdown.Item className="nav-link">
-                                <Link to="/profile">Your profile</Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item className='nav-link'>
-                                <Link onClick={handleLogOut}>Log Out</Link>
-                            </NavDropdown.Item>
-                        </>
-
+                    <span className='nav-link'>
+                        {
+                            user?.photoURL && 
+                            <OverlayTrigger
+                            placement="right"
+                            delay={{ show: 250, hide: 400 }}
+                            overlay={renderTooltip}
+                            >
+                            <img width={25} src={user?.photoURL} alt=""/>
+                            </OverlayTrigger>
                         }
-                    </NavDropdown>
+                    </span>
+                        {user?.uid && 
+                            <NavDropdown title={<FaUserCircle />}>
+                                <NavDropdown.Item className="nav-link">
+                                    <>
+                                        <Link to="/profile">Your profile</Link>
+                                    </>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item className='nav-link'>
+                                    <>
+                                        <Link onClick={handleLogOut}>Log Out</Link>
+                                    </>
+                                </NavDropdown.Item>
+                            </NavDropdown>
+                        }
                                          
                     <span className='nav-link'>
                         <Form.Check 
