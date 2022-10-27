@@ -8,7 +8,7 @@ const Courses = () => {
     const courses = useLoaderData();
     return (
         <div className='py-2 py-lg-5'>
-            <h2>All Courses</h2>
+            <h2>Let's start learning</h2>
             <div className="course-container">
                 {
                     courses.map(course=> <CourseGridView key={course._id} course={course}></CourseGridView>)

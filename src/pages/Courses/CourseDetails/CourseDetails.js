@@ -22,7 +22,7 @@ const CourseDetails = () => {
                     <Card.Img variant="top" width="200" src={image_url} />
                   </Card>
                 </div>
-                <Card className='p-2'>
+                <Card className='p-2 mb-md-5'>
                   <Pdf targetRef={ref} filename="course-details.pdf">
                     {({ toPdf }) => <button className='course-details-pdf' onClick={toPdf}><VscFilePdf className='me-2'/> Download course details</button>}
                   </Pdf>
