@@ -10,7 +10,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
 
-    const {logInUser, providerLogin, setLoading} = useContext(AuthContext);
+    const { user, logInUser, providerLogin, setLoading} = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
     const navigate = useNavigate();
@@ -29,9 +29,14 @@ const Login = () => {
         .then(result=>{
             const user = result.user;
             console.log(user);
-            toast.success('Login Successful!');
-            navigate(from, { replace: true });
             form.reset();
+            
+            if(user.emailVerified){
+                toast.success('Login Successful!');
+                navigate(from, { replace: true });
+            }else{
+                toast.error('Please verify your email first!');
+            }
         })
         .catch(error=> {
             setError(error.message);
@@ -95,7 +100,7 @@ const Login = () => {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control name="password" type="password" placeholder="Password" required/>
                             </Form.Group>
-                            <Link className='d-block mb-3'>Forgot password?</Link>
+                            <Link to="/reset" className='d-block mb-3'>Forgot password?</Link>
                             <Button variant="primary" type="submit">
                                 Submit
                                 <Toaster />

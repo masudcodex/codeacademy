@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './SignUp.css';
 import image from '../../assets/images/Sign_up.png';
 import { AuthContext } from '../../contexts/AuthProvider';
@@ -13,7 +13,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const SignUp = () => {
     
-    const {createUser, providerLogin, updateUserProfile} = useContext(AuthContext);
+    const {createUser, providerLogin, updateUserProfile, emailVerification} = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
     const [error, setError] = useState('');
@@ -37,7 +37,8 @@ const SignUp = () => {
             setError('');
             form.reset();
             handleUpdateUserProfile(name);
-            toast.success('Sign up successful');
+            handleEmailVerification();
+            toast.success('Sign up successful! Please Check your email to activate your account');
         })
         .catch(error=> setError(error.message))
     }
@@ -65,6 +66,13 @@ const SignUp = () => {
             console.log(user);
             toast.success('Registration successful!');
         })
+        .catch(error=>setError(error.message))
+    }
+
+    //--------Send Email Verification--------//
+    const handleEmailVerification = () =>{
+        emailVerification()
+        .then(()=>{})
         .catch(error=>setError(error.message))
     }
 

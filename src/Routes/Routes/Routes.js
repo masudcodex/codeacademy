@@ -13,6 +13,7 @@ import CourseDetails from '../../pages/Courses/CourseDetails/CourseDetails';
 import Cart from '../../pages/Cart/Cart';
 import Profile from '../../pages/Profile/Profile';
 import PrivateRoutes from '../PrivateRoutes/PrivateRoutes';
+import ResetPassword from '../../pages/ResetPassword/ResetPassword';
 
 const Routes = createBrowserRouter([
     {
@@ -67,6 +68,10 @@ const Routes = createBrowserRouter([
                 element: <PrivateRoutes><Cart></Cart></PrivateRoutes>
             }
         ]
+    },
+    {
+        path: '/reset',
+        element: <ResetPassword></ResetPassword>
     },
     {
         path: '*',
