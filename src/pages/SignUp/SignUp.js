@@ -90,7 +90,7 @@ const SignUp = () => {
         <div className='container'>
             <Container>
                 <Row className='align-items-center'>
-                    <Col>
+                    <Col sm="12" md="6">
                         <div className='mb-4'>
                             <h2 className='my-4'>Welcome to CODEACADEMY</h2>
                             <h5>Sign Up to get started</h5>
@@ -134,8 +134,8 @@ const SignUp = () => {
                             <p className='mb-5'>Already Have an account? <Link to="/login">Login</Link></p>
                         </div>
                     </Col>
-                    <Col>
-                        <img src={image} width="500" alt="" />
+                    <Col sm="12" md="6">
+                        <img src={image} className="w-100" alt="" />
                     </Col>
                 </Row>
             </Container>

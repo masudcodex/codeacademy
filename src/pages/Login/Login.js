@@ -76,10 +76,10 @@ const Login = () => {
         <div className='container'>
             <Container>
                 <Row className='align-items-center'>
-                    <Col>
-                        <img src={image} width="600" alt="" />
+                    <Col sm="12" md="6">
+                        <img src={image} className="w-100" alt="" />
                     </Col>
-                    <Col>
+                    <Col sm="12" md="6">
                         <div>
                             <h2 className='my-4'>Sign In to CODEACADEMY</h2>
                         </div>

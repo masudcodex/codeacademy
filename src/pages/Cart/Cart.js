@@ -120,7 +120,7 @@ const Cart = () => {
                     </Form>
                 </Col>
                 <Col lg="4">
-                <h4 className="mb-3">Your Cart</h4>
+                <h4 className="mb-3 mt-5 mt-md-0">Your Cart</h4>
                 <div>
                 <ListGroup>
                     <ListGroup.Item className='d-flex justify-content-between align-items-center'>

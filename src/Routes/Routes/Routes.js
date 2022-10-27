@@ -64,7 +64,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: '/course/:id/checkout',
-                loader: async({params}) => fetch(`http://localhost:5000/course/${params.id}/cart`),
+                loader: async({params}) => fetch(`https://codeacademy-server.vercel.app/course/${params.id}/cart`),
                 element: <PrivateRoutes><Cart></Cart></PrivateRoutes>
             }
         ]

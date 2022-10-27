@@ -11,14 +11,14 @@ import './CourseDetails.css'
 const CourseDetails = () => {
   const ref = React.createRef();
     const course = useLoaderData();
-    const {_id, title, image_url, author, details, rating, total_students, course_duration, price} = course;
+    const {_id, title, image_url, author, details, rating, total_students, course_duration } = course;
     return (
         <Container className='my-lg-4'>
           <Row>
             <Col lg="10">
               <div>
                 <div className='mb-4'>
-                  <Card>
+                  <Card className='mt-5'>
                     <Card.Img variant="top" width="200" src={image_url} />
                   </Card>
                 </div>
