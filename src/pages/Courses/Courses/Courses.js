@@ -7,7 +7,7 @@ import './Courses.css';
 const Courses = () => {
     const courses = useLoaderData();
     return (
-        <div>
+        <div className='py-2 py-lg-5'>
             <h2>All Courses</h2>
             <div className="course-container">
                 {

@@ -10,7 +10,7 @@ const RightSidebar = () => {
         .then(data=> setCategories(data))
     },[])
     return (
-        <div className='container my-lg-4'>
+        <div className='container my-2 my-lg-5'>
             <h5 className='ms-2'>Categories</h5>
             {
                 categories.map(category=><p className='categoryList' key={category.id}>

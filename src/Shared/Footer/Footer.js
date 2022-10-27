@@ -4,7 +4,7 @@ import './Footer.css';
 const Footer = () => {
     return (
         <div className='footer'>
-            <p><small>Copyright © CODEACADEMY 2022 . All rights reserved.</small></p>
+            <small className='text-muted'>Copyright © CODEACADEMY 2022 . All rights reserved.</small>
         </div>
     );
 };
