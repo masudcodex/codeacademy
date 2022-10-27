@@ -21,17 +21,17 @@ const Routes = createBrowserRouter([
         children: [
             {
                 path: '/',
-                loader: async () => fetch('http://localhost:5000/course'),
+                loader: async () => fetch('https://codeacademy-server.vercel.app/course'),
                 element: <Courses></Courses>
             },
             {
                 path: '/category/:id',
-                loader: async ({params}) => fetch(`http://localhost:5000/category/${params.id}`),
+                loader: async ({params}) => fetch(`https://codeacademy-server.vercel.app/category/${params.id}`),
                 element: <Categories></Categories>
             },
             {
                 path: '/course/:id',
-                loader: async({params}) => fetch(`http://localhost:5000/course/${params.id}`),
+                loader: async({params}) => fetch(`https://codeacademy-server.vercel.app/course/${params.id}`),
                 element: <CourseDetails></CourseDetails>
             },
 

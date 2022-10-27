@@ -5,7 +5,7 @@ import './RightSidebar.css';
 const RightSidebar = () => {
     const [categories, setCategories] = useState([]);
     useEffect(()=>{
-        fetch(`http://localhost:5000/category`)
+        fetch(`https://codeacademy-server.vercel.app/category`)
         .then(res=>res.json())
         .then(data=> setCategories(data))
     },[])

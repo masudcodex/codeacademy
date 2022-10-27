@@ -1,6 +1,9 @@
 .header{
     background-color: #fafafa;
 }
+.nav-link img{
+    border-radius: 50%;
+}
 .nav-link a{
     color: #135e9e;
     text-decoration: none;

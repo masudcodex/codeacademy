@@ -123,7 +123,7 @@ const SignUp = () => {
                             </div>
                         </div>
                         <div className='mt-3'>
-                            <p>Already Have an account? <Link to="/login">Login</Link></p>
+                            <p className='mb-5'>Already Have an account? <Link to="/login">Login</Link></p>
                         </div>
                     </Col>
                     <Col>

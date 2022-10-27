@@ -29,9 +29,9 @@ const Login = () => {
         .then(result=>{
             const user = result.user;
             console.log(user);
-            form.reset();
-            navigate(from, { replace: true });
             toast.success('Login Successful!');
+            navigate(from, { replace: true });
+            form.reset();
         })
         .catch(error=> {
             setError(error.message);
@@ -48,8 +48,8 @@ const Login = () => {
         .then(result=> {
             const user = result.user;
             console.log(user);
-            navigate(from, { replace: true });
             toast.success('Login Successful!');
+            navigate(from, { replace: true });
         })
         .catch(error=> {
             setError(error.message)
@@ -61,8 +61,8 @@ const Login = () => {
         .then(result=>{
             const user = result.user;
             console.log(user);
-            navigate(from, { replace: true });
             toast.success('Login Successful!');
+            navigate(from, { replace: true });
         })
         .catch(error=>setError(error.message))
     }
@@ -105,7 +105,7 @@ const Login = () => {
                             </Form.Text>
                         </Form>
                         <div className='mt-3'>
-                            <p>Dont Have an account? <Link to="/signup">Sign Up</Link></p>
+                            <p>Don't Have an account? <Link to="/signup">Sign Up</Link></p>
                         </div>
                     </Col>
                 </Row>
