@@ -6,6 +6,9 @@
 }
 .course-purchase{
     width: 100%;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
     
 }
 .course-purchase:hover{

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider';
 import './Profile.css';
 
@@ -16,6 +17,7 @@ const Profile = () => {
         handleUpdateUserProfile(name, photoURL);
         form.reset();
         setLoading(false);
+        toast.success('Profile Updated Successfully!');
     }
 
     const handleUpdateUserProfile=(name, photoURL)=>{

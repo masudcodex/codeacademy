@@ -7,6 +7,7 @@ import './SignUp.css';
 import image from '../../assets/images/Sign_up.png';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 
@@ -36,6 +37,7 @@ const SignUp = () => {
             setError('');
             form.reset();
             handleUpdateUserProfile(name);
+            toast.success('Sign up successful');
         })
         .catch(error=> setError(error.message))
     }
@@ -47,6 +49,7 @@ const SignUp = () => {
         .then(result=> {
             const user = result.user;
             console.log(user);
+            toast.success('Registration successful!');
         })
         .catch(error=> {
             setError(error.message)
@@ -60,6 +63,7 @@ const SignUp = () => {
         .then(result=>{
             const user = result.user;
             console.log(user);
+            toast.success('Registration successful!');
         })
         .catch(error=>setError(error.message))
     }
@@ -105,6 +109,7 @@ const SignUp = () => {
 
                             <Button variant="primary" type="submit">
                                 Sign up
+                                <Toaster />
                             </Button> 
                             <Form.Text className="text-danger d-block">
                                 {error}

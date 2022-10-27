@@ -37,7 +37,7 @@ const CourseDetails = () => {
                     </Card.Text>
                   </Card.Body>
                   <div className='d-flex course-buy'>
-                    <Button><Link to={`/course/${_id}/checkout`} className='course-purchase'>Buy Now</Link></Button>
+                    <Button><Link to={`/course/${_id}/checkout`} className='course-purchase'>Get premium access</Link></Button>
                     <Button><FaShoppingCart />  <Link to={`/course/${_id}/checkout`} className='course-purchase'>Add to cart</Link></Button>
                   </div>
                 </Card>

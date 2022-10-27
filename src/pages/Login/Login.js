@@ -6,6 +6,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
 
@@ -28,10 +29,14 @@ const Login = () => {
         .then(result=>{
             const user = result.user;
             console.log(user);
-            navigate(from, { replace: true });
             form.reset();
+            navigate(from, { replace: true });
+            toast.success('Login Successful!');
         })
-        .catch(error=> setError(error.message))
+        .catch(error=> {
+            setError(error.message);
+            toast.error(error.message)
+        })
         .finally(()=>{
             setLoading(false);
         })
@@ -44,6 +49,7 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             navigate(from, { replace: true });
+            toast.success('Login Successful!');
         })
         .catch(error=> {
             setError(error.message)
@@ -56,6 +62,7 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             navigate(from, { replace: true });
+            toast.success('Login Successful!');
         })
         .catch(error=>setError(error.message))
     }
@@ -91,8 +98,9 @@ const Login = () => {
                             <Link className='d-block mb-3'>Forgot password?</Link>
                             <Button variant="primary" type="submit">
                                 Submit
+                                <Toaster />
                             </Button>
-                            <Form.Text className="text-danger">
+                            <Form.Text className="text-danger d-block">
                                 {error}
                             </Form.Text>
                         </Form>
