@@ -10,7 +10,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
 
-    const { user, logInUser, providerLogin, setLoading} = useContext(AuthContext);
+    const { logInUser, providerLogin, setLoading} = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
     const navigate = useNavigate();
@@ -52,12 +52,14 @@ const Login = () => {
         providerLogin(googleProvider)
         .then(result=> {
             const user = result.user;
-            console.log(user);
             toast.success('Login Successful!');
             navigate(from, { replace: true });
         })
         .catch(error=> {
             setError(error.message)
+        })
+        .finally(()=>{
+            setLoading(false);
         })
     }
     //----------Github SignIn--------------//
@@ -70,6 +72,9 @@ const Login = () => {
             navigate(from, { replace: true });
         })
         .catch(error=>setError(error.message))
+        .finally(()=>{
+            setLoading(false);
+        })
     }
 
     return (
