@@ -1,11 +1,15 @@
 import React from 'react';
+import ReactDOM from "react-dom";
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { Link, useLoaderData } from 'react-router-dom';
+import Pdf from "react-to-pdf";
 import { FaRegCaretSquareRight, FaMobileAlt, FaTrophy, FaShoppingCart } from "react-icons/fa";
 import { GiInfinity } from "react-icons/gi";
+import { VscFilePdf } from "react-icons/vsc";
 import './CourseDetails.css'
 
 const CourseDetails = () => {
+  const ref = React.createRef();
     const course = useLoaderData();
     const {_id, title, image_url, author, details, rating, total_students, course_duration, price} = course;
     return (
@@ -19,8 +23,11 @@ const CourseDetails = () => {
                   </Card>
                 </div>
                 <Card className='p-2'>
-                  <Card.Body>
-                    <Card.Title>{title}</Card.Title>
+                  <Pdf targetRef={ref} filename="course-details.pdf">
+                    {({ toPdf }) => <button className='course-details-pdf' onClick={toPdf}><VscFilePdf className='me-2'/> Download course details</button>}
+                  </Pdf>
+                  <Card.Body ref={ref}>
+                    <Card.Title className='mt-4'>{title}</Card.Title>
                     <div className='d-flex'>
                       <p className='me-5'><b>Ratings:</b> {rating.number}</p>
                       <p>{total_students} students</p>
