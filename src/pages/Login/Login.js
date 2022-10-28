@@ -70,6 +70,7 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             toast.success('Login Successful!');
+            navigate(from, { replace: true });
         })
         .catch(error=>{
             console.error(error);
