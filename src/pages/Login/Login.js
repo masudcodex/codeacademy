@@ -52,6 +52,7 @@ const Login = () => {
         providerLogin(googleProvider)
         .then(result=> {
             const user = result.user;
+            console.log(user);
             toast.success('Login Successful!');
             navigate(from, { replace: true });
         })
@@ -69,11 +70,10 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             toast.success('Login Successful!');
-            navigate(from, { replace: true });
         })
-        .catch(error=>setError(error.message))
-        .finally(()=>{
-            setLoading(false);
+        .catch(error=>{
+            console.error(error);
+            setError(error.message);
         })
     }
 
