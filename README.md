@@ -22,6 +22,6 @@
   
 Follow the following steps to get development environment running.
 
-  - git clone https://github.com/programming-hero-web-course1/b610-learning-platform-client-side-masudcodex.git  - to clone the repository from github
+  - git clone https://github.com/masudcodex/codeacademy.git  - to clone the repository from github
   - npm install - to install node modules
   - npm start - to continue building applications
