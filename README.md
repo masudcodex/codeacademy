@@ -1,7 +1,7 @@
 # Code Academy (React website) V0.1.0
 
 ### Live project link - https://codeacademy24.netlify.app/
-### Client side gitHub repository link - https://github.com/programming-hero-web-course1/b610-learning-platform-client-side-masudcodex.git
+### Client side gitHub repository link - https://github.com/masudcodex/codeacademy.git
 ### Server side gitHub repository link - https://github.com/masudcodex/codeacademy-server.git
 
 ## Developed with
